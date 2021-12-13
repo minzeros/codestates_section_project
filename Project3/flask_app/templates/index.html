@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Catch Cancel</title>
+</head>
+  <body>
+      <h1>Catch Cancel</h1>
+      <form method="POST">
+        <select class="form-select" name="arrival_date_month">
+            <option selected>호텔 도착달(month)</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+    
+        <select class="form-select" name="arrival_date_day_of_month">
+            <option selected>호텔 도착일(day)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+          </select>
+    
+          <select class="form-select" name="lead_time">
+            <option selected>예약한 날부터 호텔도착일까지 남은 기간</option>
+            <option value="A">30일 미만</option>
+            <option value="B">60일 미만</option>
+            <option value="C">100일 미만</option>
+            <option value="D">200일 미만</option>
+            <option value="E">300일 미만</option>
+            <option value="F">300일 이상</option>
+          </select>
+    
+          <input class="form-control" type="text" placeholder="평일 숙박일 수" name="stays_in_week_nights">
+    
+          <input class="form-control" type="text" placeholder="주말 숙박일 수" name="stays_in_weekend_nights">
+    
+          <select class="form-select" name="adults">
+            <option selected>성인 수</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+    
+          <select class="form-select" name="children">
+            <option selected>청소년 수</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+    
+          <select class="form-select" name="babies">
+            <option selected>아이 수</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+    
+          <select class="form-select" name="is_repeated_guest">
+            <option selected>재방문 고객 여부</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+    
+          <input class="form-control" type="text" placeholder="숙박 요금 (1일 기준)" name="adr">
+    
+          <select class="form-select" name="required_car_parking_spaces">
+            <option selected>요청한 주차 공간 수</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+    
+          <select class="form-select" name="total_of_special_requests">
+            <option selected>예약시 특별히 요청한 요구사항 수</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <input type="submit" value="예측하기">
+      </form>
+
+      {% if proba_cancel %}
+      <br>
+          <h3> 해당 고객이 예약을 취소할 확률은 {{ proba_cancel }} % 입니다.</h3>
+      {% endif %}
+
+
+        <!-- <form method="POST">
+            <input type="text" name="write">
+            <input type="submit">
+        </form>
+        {{ cancel }}
+
+        {% block main%}
+        <form method="POST" action="/login">
+        <div>아이디 : <input type="text" name="id" placeholder="아이디"></div>
+        <div>비밀번호 : <input type="password" name="password" placeholder="비밀번호"></div>
+                <input type="submit" value="로그인">
+                <button><a href="/register" style="text-decoration: none;color:black;">회원가입</a></button>
+        </form>
+        {{ text }}
+        {% endblock%} -->
+  </body>
+</html>
